@@ -1,0 +1,14 @@
+{
+  "name": "vanity_address_generator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "echo 'No frontend dev server running'",
+    "tauri": "tauri dev",
+    "build": "tauri build"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^1.6.0",
+    "@tauri-apps/cli": "^1.6.2"
+  }
+}

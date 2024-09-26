@@ -4,6 +4,7 @@ use secp256k1::{Secp256k1, SecretKey, PublicKey};
 use sha3::{Digest, Keccak256};
 use hex::encode;
 use std::io::{self, Write};
+use tauri::command;
 
 // Function to generate a new private key
 fn generate_private_key() -> SecretKey {

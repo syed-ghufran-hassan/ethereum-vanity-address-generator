@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanity Address Generator</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to CSS file -->
+</head>
+<body>
+    <div class="container">
+        <h1>Vanity Address Generator</h1>
+        <input id="vanityPattern" type="text" placeholder="Enter vanity pattern (e.g., 0xabc)" />
+        <button id="generateButton">Generate Address</button>
+        <div id="result"></div>
+    </div>
+    
+    <script type="module">
+        import { invoke } from '@tauri-apps/api';
+
+        document.getElementById('generateButton').addEventListener('click', async () => {
+            const pattern = document.getElementById('vanityPattern').value;
+            await generateAddress(pattern);
+        });
+
+        async function generateAddress(pattern) {
+            try {
+                const address = await invoke('generate_address', { pattern });
+                console.log('Generated Address:', address);
+                document.getElementById('result').innerText = `Generated Address: ${address}`;
+            } catch (error) {
+                console.error('Error generating address:', error);
+                alert('Failed to generate address. Check console for details.');
+            }
+        }
+    </script>
+</body>
+</html>
